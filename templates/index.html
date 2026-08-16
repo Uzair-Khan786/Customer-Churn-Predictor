@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Data Input Form Panel -->
+    <div class="card">
+        <h2>Customer Churn Predictor</h2>
+        <form action="/predict" method="POST">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Senior Citizen Status</label>
+                    <select name="SeniorCitizen" class="input-field">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Account Tenure (Months)</label>
+                    <input type="number" name="tenure" class="input-field" placeholder="e.g. 5" min="0" max="72" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Multiple Lines</label>
+                    <select name="MultipleLines" class="input-field">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No phone service">No phone service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Internet Service Provider Type</label>
+                    <select name="InternetService" class="input-field">
+                        <option value="Fiber optic">Fiber optic</option>
+                        <option value="DSL">DSL</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Online Security Package</label>
+                    <select name="OnlineSecurity" class="input-field">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Online Backup Service</label>
+                    <select name="OnlineBackup" class="input-field">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Technical Support Tier</label>
+                    <select name="TechSupport" class="input-field">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Streaming TV Service</label>
+                    <select name="StreamingTV" class="input-field">
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No internet service">No internet service</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Billing Contract Plan Type</label>
+                    <select name="Contract" class="input-field">
+                        <option value="Month-to-month">Month-to-month</option>
+                        <option value="One year">One year</option>
+                        <option value="Two year">Two year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Paperless Billing Profile</label>
+                    <select name="PaperlessBilling" class="input-field">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row" style="margin-bottom: 24px;">
+                <div class="form-group">
+                    <label>Payment Selection Method</label>
+                    <select name="PaymentMethod" class="input-field">
+                        <option value="Electronic check">Electronic check</option>
+                        <option value="Mailed check">Mailed check</option>
+                        <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                        <option value="Credit card (automatic)">Credit card (automatic)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Monthly Account Charges ($)</label>
+                    <input type="number" step="0.01" name="MonthlyCharges" class="input-field" placeholder="e.g. 79.95" min="18.25" max="118.75" required>
+                </div>
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+
+    <!-- Results Display -->
+    {% if result %}
+        
+        {% if result.status == 'error' %}
+            <div class="error-card">
+                <strong>Error Occured:</strong> {{ result.message }}
+            </div>
+        
+        {% elif result.status == 'success' %}
+            <div class="output-card">
+                <div class="label">Prediction</div>
+                <div class="prediction-text">{{ result.prediction }}</div>
+                
+                <div class="label">Churn Probability</div>
+                <div class="progress-container">
+                    <div class="progress-bar-bg">
+                        <!-- Sets inline width percentage directly for CSS animation -->
+                        <div class="progress-bar-fill" style="width: {{ result.confidence }}%;"></div>
+                    </div>
+                    <div class="percentage">{{ result.confidence }}% Match</div>
+                </div>
+
+                {% if result.recommended_actions %}
+                <div class="drivers-divider">
+                    <div class="label">Recommended Retention Actions</div>
+                    <div style="margin-top: 12px;">
+                        {% for action in result.recommended_actions %}
+                            <div class="reason-item">
+                                <span class="reason-bullet">✓</span> 
+                                <span>{{ action }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+</body>
+</html>
