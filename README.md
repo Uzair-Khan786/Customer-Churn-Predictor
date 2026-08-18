@@ -1,4 +1,4 @@
-📉 Customer Churn Prediction
+**📉 Customer Churn Prediction**
 
 Predicting customer churn with thoughtful feature selection, feature engineering, exploratory data analysis, and machine learning.
 
@@ -6,7 +6,7 @@ A machine learning project built using the Telecom Customer Churn dataset from K
 
 The goal wasn't simply to maximize a metric—it was to build a model with meaningful features, strong generalization, and useful churn detection performance.
 
-🚀 Project Highlights
+🚀**Project Highlights**
 🧹 Heavy feature selection to remove redundant and low-value variables
 🧠 Feature engineering to create business-relevant churn indicators
 📊 In-depth EDA to understand customer behavior and churn patterns
@@ -16,7 +16,7 @@ The goal wasn't simply to maximize a metric—it was to build a model with meani
 🎯 Selected the best default model because tuning produced only marginal improvement while showing signs of slight underfitting
 📈 Achieved 0.868 ROC-AUC and 0.704 PR-AUC
 ⚖️ Training and testing performance are almost identical, indicating strong generalization
-📂 Dataset
+📂 **Dataset**
 
 Dataset: Telecom Customer Churn
 Source: Kaggle
@@ -35,11 +35,11 @@ The target variable is:
 
 Churn
 
-🧹 Feature Selection
+🧹 **Feature Selection**
 
 Instead of feeding every available feature into the models, I performed extensive feature selection to reduce redundancy and retain the information that actually contributes to prediction.
 
-❌ Removed Features
+❌ **Removed Features**
 
 The following features were removed:
 
@@ -53,25 +53,25 @@ DeviceProtection
 
 These variables were considered unnecessary for the final modeling pipeline because they provided limited additional predictive value.
 
-🔗 Removed Highly Correlated Features
+🔗 **Removed Highly Correlated Features**
 
 I also removed features that were providing redundant information.
 
-Total_charges
+*Total_charges*
 
 Total_charges was highly correlated with Monthly_charges, so it was removed to reduce redundancy.
 
-Streaming_Movies
+*Streaming_Movies*
 
 Streaming_Movies and Streaming_TV were carrying highly similar information. Since both were not providing meaningful new information to the model, Streaming_Movies was removed.
 
-🎯 Result
+🎯 **Result**
 
 The final feature set was deliberately kept more compact and informative rather than blindly retaining every available column.
 
-Principle: More features ≠ better model.
+*Principle: More features ≠ better model.*
 
-🛠️ Feature Engineering
+🛠️ **Feature Engineering**
 
 One of the most important parts of the project was transforming raw variables into features that could represent customer churn risk more meaningfully.
 
@@ -96,7 +96,7 @@ df['high_risk'] = (
     (df['TechSupport'] == 'No')
 ).astype(int)
 
-💡 Why?
+💡 **Why?**
 
 Customers with very low tenure and no technical support can represent a particularly vulnerable segment.
 
@@ -117,7 +117,7 @@ Senior_Pressure = Monthly_charges × SeniorCitizen
 
 This feature captures the idea that higher monthly charges may have a different implication for senior customers than for non-senior customers.
 
-🔎 Exploratory Data Analysis
+🔎**Exploratory Data Analysis**
 
 Extensive EDA was performed before final model selection.
 
@@ -136,13 +136,13 @@ The analysis focused on understanding:
 
 The EDA was not treated as a purely visual step—it directly influenced feature selection and feature engineering.
 
-🤖 Modeling
+🤖 **Modeling**
 
 Multiple machine learning models were trained and evaluated.
 
 After comparing the models, the two best-performing models were selected for hyperparameter tuning.
 
-⚙️ Hyperparameter Tuning
+⚙️ **Hyperparameter Tuning**
 
 The two strongest models were tuned to determine whether their performance could be improved further.
 
@@ -152,7 +152,7 @@ The best tuned model showed slight underfitting and improved only very marginall
 
 Rather than automatically choosing the tuned model simply because it had been optimized, I compared the results and selected the best-performing default model.
 
-🧠 Why keep the default model?
+🧠 *Why keep the default model?*
 
 Because the objective is not:
 
@@ -164,8 +164,8 @@ It is:
 
 The default model offered essentially the same—and slightly better—generalization performance without introducing unnecessary complexity.
 
-📊 Final Model Performance
-🏆 Selected Model
+**📊 Final Model Performance**
+**🏆 Selected Model
 Metric	Score
 🏋️ Training Score	0.825
 🧪 Testing Score	0.824
@@ -177,12 +177,12 @@ Metric	Score
 Classification Report
 Precision : 0.67
 Recall    : 0.72
-F1 Score  : 0.69
+F1 Score  : 0.69**
 
-📈 Understanding the Results
+**📈 Understanding the Results
 Training vs Testing
 Training : 0.825
-Testing  : 0.824
+Testing  : 0.824**
 
 
 The extremely small difference between training and testing scores is encouraging.
@@ -224,7 +224,7 @@ The ROC-AUC of 0.868 demonstrates strong ranking/discrimination ability.
 
 In practical terms, the model is quite effective at distinguishing customers who are more likely to churn from those who are less likely to churn.
 
-🧪 Model Selection Philosophy
+🧪**Model Selection Philosophy**
 
 One of the key lessons from this project was:
 
@@ -248,7 +248,7 @@ The final decision favored the best default model.
 
 The simplest model that generalizes well is often more valuable than a tuned model that offers negligible improvement.
 
-🔄 Project Workflow
+🔄 **Project Workflow**
                 ┌──────────────────────┐
                 │   Kaggle Telecom     │
                 │       Dataset        │
@@ -300,7 +300,7 @@ The simplest model that generalizes well is often more valuable than a tuned mod
                 │ Churn Prediction     │
                 └──────────────────────┘
 
-💡 Key Takeaways
+💡 **Key Takeaways**
 1. Feature quality matters more than feature quantity
 
 Removing redundant features helped create a cleaner modeling problem.
@@ -327,7 +327,7 @@ with only a 0.1 percentage-point difference.
 
 Precision, recall, F1, PR-AUC, and ROC-AUC provide a much more complete picture of model performance.
 
-📌 Final Results at a Glance
+📌 **Final Results at a Glance**
 ╔══════════════════════════════════════╗
 ║       CUSTOMER CHURN MODEL           ║
 ╠══════════════════════════════════════╣
@@ -340,7 +340,7 @@ Precision, recall, F1, PR-AUC, and ROC-AUC provide a much more complete picture 
 ║ ROC-AUC              →   0.868       ║
 ╚══════════════════════════════════════╝
 
-🏁 Conclusion
+🏁 **Conclusion**
 
 This project demonstrates an end-to-end approach to customer churn prediction, from aggressive feature selection and domain-driven feature engineering to EDA, model comparison, hyperparameter tuning, and final model selection.
 
@@ -352,4 +352,4 @@ Build thoughtfully. Validate rigorously. Keep what actually works.
 
 Feel free to explore the notebook, experiment with different models, improve the feature engineering, or build a deployment layer around the final churn prediction model.
 
-Developed by Uzair - Computer Science Student and Data Science Enthusiast. 
+**Developed by Uzair - Computer Science Student and Data Science Enthusiast.**
