@@ -7,28 +7,45 @@ A machine learning project built using the Telecom Customer Churn dataset from K
 The goal wasn't simply to maximize a metric—it was to build a model with meaningful features, strong generalization, and useful churn detection performance.
 
 🚀**Project Highlights**
+
 🧹 Heavy feature selection to remove redundant and low-value variables
+
 🧠 Feature engineering to create business-relevant churn indicators
+
 📊 In-depth EDA to understand customer behavior and churn patterns
+
 🤖 Multiple machine learning models trained and evaluated
+
 ⚙️ Hyperparameter tuning performed on the two strongest models
+
 🔍 Compared tuned models against their default counterparts
+
 🎯 Selected the best default model because tuning produced only marginal improvement while showing signs of slight underfitting
+
 📈 Achieved 0.868 ROC-AUC and 0.704 PR-AUC
+
 ⚖️ Training and testing performance are almost identical, indicating strong generalization
+
 📂 **Dataset**
 
 Dataset: Telecom Customer Churn
+
 Source: Kaggle
 
 The dataset contains customer-level information related to:
 
 Customer tenure
+
 Contract and payment information
+
 Monthly charges
+
 Internet and streaming services
+
 Technical support
+
 Senior citizen status
+
 Churn behavior
 
 The target variable is:
@@ -44,10 +61,15 @@ Instead of feeding every available feature into the models, I performed extensiv
 The following features were removed:
 
 gender
+
 Dependents
+
 Partner
+
 PhoneService
+
 customerID
+
 DeviceProtection
 
 
@@ -124,14 +146,23 @@ Extensive EDA was performed before final model selection.
 The analysis focused on understanding:
 
 📌 Churn distribution
+
 📌 Customer tenure
+
 📌 Monthly charges
+
 📌 Contract behavior
+
 📌 Service usage
+
 📌 Technical support
+
 📌 Customer segments
+
 📌 Relationships between features and churn
+
 📌 Potentially redundant variables
+
 📌 Patterns that could be converted into engineered features
 
 The EDA was not treated as a purely visual step—it directly influenced feature selection and feature engineering.
@@ -236,12 +267,19 @@ The tuning process produced a model that was slightly underfitting and only marg
 Therefore, instead of selecting the tuned model automatically, I evaluated:
 
 Training performance
+
 Testing performance
+
 Generalization gap
+
 Precision
+
 Recall
+
 F1 score
+
 PR-AUC
+
 ROC-AUC
 
 The final decision favored the best default model.
@@ -301,6 +339,7 @@ The simplest model that generalizes well is often more valuable than a tuned mod
                 └──────────────────────┘
 
 💡 **Key Takeaways**
+
 1. Feature quality matters more than feature quantity
 
 Removing redundant features helped create a cleaner modeling problem.
@@ -328,6 +367,7 @@ with only a 0.1 percentage-point difference.
 Precision, recall, F1, PR-AUC, and ROC-AUC provide a much more complete picture of model performance.
 
 📌 **Final Results at a Glance**
+
 ╔══════════════════════════════════════╗
 ║       CUSTOMER CHURN MODEL           ║
 ╠══════════════════════════════════════╣
